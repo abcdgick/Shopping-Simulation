@@ -24,8 +24,8 @@ public class UTS_2020130017 extends Application {
         
         Scene scene = new Scene(root);
         
-        //String css = this.getClass().getResource("Style.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("Style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         
         stage.setScene(scene);
         stage.show();

@@ -102,8 +102,8 @@ public class FXMLDocumentController implements Initializable {
             Scene scene = new Scene(root);
             Stage stg = new Stage();
             
-            //String css = this.getClass().getResource("Style.css").toExternalForm();
-            //scene.getStylesheets().add(css);
+            String css = this.getClass().getResource("Style.css").toExternalForm();
+            scene.getStylesheets().add(css);
             
             stg.initModality(Modality.APPLICATION_MODAL);
             stg.setResizable(false);
@@ -154,8 +154,8 @@ public class FXMLDocumentController implements Initializable {
             Scene scene = new Scene(root);
             Stage stg = new Stage();
             
-            //String css = this.getClass().getResource("Style.css").toExternalForm();
-            //scene.getStylesheets().add(css);
+            String css = this.getClass().getResource("Style.css").toExternalForm();
+            scene.getStylesheets().add(css);
             
             stg.initModality(Modality.APPLICATION_MODAL);
             stg.setResizable(false);

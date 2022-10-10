@@ -1,0 +1,111 @@
+#FormPane{
+    -fx-background-image: url("Background.jpg");
+    -fx-background-repeat: no-repeat;   
+    -fx-background-size: 800 720;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+
+#StrukPane{
+    -fx-background-image: url("Cetak.png");
+    -fx-background-repeat: no-repeat;   
+    -fx-background-size: 400 700;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+
+
+#btnLain {
+    -fx-font-weight: bold;
+    -fx-background-color: #2196f3;
+    -fx-background-radius: 22;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+#btnLain:hover{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-font-size: 18;
+    -fx-text-fill: #2196f3;
+    -fx-text-border-color: #2196f3;
+    -fx-border-radius: 20;
+    -fx-border-width: 3;
+}
+
+#btnLain:pressed{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-font-size: 18;
+    -fx-text-fill: #2196f3;
+    -fx-text-border-color: #2196f3;
+    -fx-border-radius: 20;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+
+#btnBayar {
+    -fx-font-weight: bold;
+    -fx-background-color: #2e7d43;
+    -fx-background-radius: 22;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+#btnBayar:hover{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-font-size: 18;
+    -fx-text-fill: #2e7d43;
+    -fx-text-border-color: #2e7d43;
+    -fx-border-radius: 20;
+    -fx-border-width: 3;
+}
+
+#btnBayar:pressed{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-font-size: 18;
+    -fx-text-fill: #2e7d43;
+    -fx-text-border-color: #2e7d43;
+    -fx-border-radius: 20;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+
+#btnKeluar {
+    -fx-font-weight: bold;
+    -fx-background-color: #b53131;
+    -fx-background-radius: 22;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+#btnKeluar:hover{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-font-size: 18;
+    -fx-text-fill: #b53131;
+    -fx-text-border-color: #b53131;
+    -fx-border-radius: 20;
+    -fx-border-width: 3;
+}
+
+#btnKeluar:pressed{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-font-size: 18;
+    -fx-text-fill: #2e7d43;
+    -fx-text-border-color: #b53131;
+    -fx-border-radius: 20;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}

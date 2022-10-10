@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="ListPane" fx:id="ListPane" prefHeight="720.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts_2020130017.FXML_ListPembelianController">
+<AnchorPane id="FormPane" fx:id="ListPane" prefHeight="720.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts_2020130017.FXML_ListPembelianController">
    <children>
       <ImageView fitHeight="192.0" fitWidth="541.0" layoutX="130.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,14 +32,14 @@
             <Image url="@Assets/Albi%20Flip.png" />
          </image>
       </ImageView>
-      <Label layoutX="253.0" layoutY="523.0" text="Subtotal">
+      <Label layoutX="253.0" layoutY="523.0" text="Subtotal" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB Bold" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="txtSubtotal" editable="false" layoutX="346.0" layoutY="523.0" prefHeight="25.0" prefWidth="110.0" />
-      <Button fx:id="btnEdit" alignment="CENTER" layoutX="614.0" layoutY="236.0" mnemonicParsing="false" onAction="#editKlik" prefHeight="44.0" prefWidth="59.0" text="Edit Barang" textAlignment="CENTER" wrapText="true" />
-      <Button fx:id="btnKembali" layoutX="614.0" layoutY="372.0" mnemonicParsing="false" onAction="#kembaliKlik" text="Kembali" />
+      <Button id="btnLain" fx:id="btnEdit" alignment="CENTER" layoutX="591.0" layoutY="236.0" mnemonicParsing="false" onAction="#editKlik" prefHeight="66.0" prefWidth="97.0" text="Edit Barang" textAlignment="CENTER" wrapText="true" />
+      <Button id="btnKeluar" fx:id="btnKembali" layoutX="591.0" layoutY="372.0" mnemonicParsing="false" onAction="#kembaliKlik" prefHeight="35.0" prefWidth="97.0" text="Kembali" />
       <TableView fx:id="tbvList" layoutX="132.0" layoutY="121.0" prefHeight="390.0" prefWidth="445.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
