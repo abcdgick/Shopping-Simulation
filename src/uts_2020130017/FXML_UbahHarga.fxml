@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="UbahPane" prefHeight="270.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts_2020130017.FXML_UbahHargaController">
+   <children>
+      <ImageView fitHeight="270.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Ubah.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0000004b" height="230.0" layoutX="20.0" layoutY="20.0" stroke="TRANSPARENT" strokeType="INSIDE" width="440.0" />
+      <Label layoutX="40.0" layoutY="30.0" text="Nama Barang" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="70.0" text="Kategori" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="110.0" text="Stok Barang" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="156.0" text="Harga Satuan" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="textNama" layoutX="262.0" layoutY="30.0" prefHeight="25.0" prefWidth="180.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="textKategori" layoutX="262.0" layoutY="70.0" prefHeight="25.0" prefWidth="180.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="textStok" alignment="CENTER_RIGHT" layoutX="262.0" layoutY="110.0" prefHeight="25.0" prefWidth="180.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtHarga" alignment="CENTER_RIGHT" layoutX="302.0" layoutY="153.0" prefHeight="31.0" prefWidth="140.0">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font>
+      </TextField>
+      <Button id="btnBayarKecil" fx:id="btnUpdate" layoutX="55.0" layoutY="204.0" mnemonicParsing="false" onAction="#updateKlik" prefHeight="52.0" prefWidth="92.0" text="Update" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button id="btnKeluarKecil" fx:id="btnBatal" layoutX="280.0" layoutY="204.0" mnemonicParsing="false" onAction="#batalKlik" prefHeight="52.0" prefWidth="92.0" text="Batal">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

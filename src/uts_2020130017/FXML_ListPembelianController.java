@@ -87,7 +87,6 @@ public class FXML_ListPembelianController implements Initializable {
     }
     
     private void setTabel(){
-        if(!keranjang.isEmpty()){
             tbvList.getColumns().clear();
             System.out.println("Jalan");
             TableColumn col = new TableColumn("Gambar Barang");
@@ -123,12 +122,6 @@ public class FXML_ListPembelianController implements Initializable {
             tbvList.getColumns().addAll(col);
             
             tbvList.setItems(keranjang);
-
-        } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Jenis Barang Kosong", ButtonType.OK);
-            a.showAndWait();
-            //tbvList.getScene().getWindow().hide();
-        }
     }
     
     private void kalkuSub(){

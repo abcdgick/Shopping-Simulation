@@ -80,10 +80,11 @@ public class FXML_PembayaranController implements Initializable {
         alert.setContentText("Sudah yakin dengan belanjaannya? Data pembelian tidak dapat diedit lagi sewaktu struk sudah dicetak");
         
         if(alert.showAndWait().get() == ButtonType.OK){
-            keranjang.clear();
             try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_Struk.fxml"));
             Parent root = (Parent)loader.load();
+            FXML_StrukController isidt= (FXML_StrukController)loader.getController();
+            isidt.transfer(subtotal, disc, total, ppn, bayar);
             Scene scene = new Scene(root);
             Stage stg = new Stage();
             
