@@ -46,6 +46,8 @@ public class FXML_ListPembelianController implements Initializable {
     private TableView<BarangModel> tbvList;
 
     private int sub = 0;
+    @FXML
+    private Button btnHapus;
     /**
      * Initializes the controller class.
      */
@@ -60,12 +62,28 @@ public class FXML_ListPembelianController implements Initializable {
         BarangModel dis = tbvList.getSelectionModel().getSelectedItem();
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Edit");
+        alert.setTitle("Edit Barang");
         alert.setHeaderText("Edit Barang Belanjaan");
         alert.setContentText("Mau edit barang " + dis.getNamaBarang()+"?");
         
         if(alert.showAndWait().get() == ButtonType.OK){
             FXMLDocumentController.index = keranjang.indexOf(dis);
+            kembali();
+        }
+    }
+    
+    @FXML
+    private void hapusKlik(ActionEvent event) {
+        BarangModel dis = tbvList.getSelectionModel().getSelectedItem();
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Hapus Barang");
+        alert.setHeaderText("Hapus Barang di keranjang");
+        alert.setContentText("Yakin batal beli " + dis.getNamaBarang()+"?");
+        
+        if(alert.showAndWait().get() == ButtonType.OK){
+            keranjang.remove(dis);
+            setTabel();
             kembali();
         }
     }
@@ -88,7 +106,6 @@ public class FXML_ListPembelianController implements Initializable {
     
     private void setTabel(){
             tbvList.getColumns().clear();
-            System.out.println("Jalan");
             TableColumn col = new TableColumn("Gambar Barang");
             col.setCellFactory(param ->{
                 final ImageView imageView = new ImageView();

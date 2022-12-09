@@ -121,42 +121,41 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void tambahKlik(ActionEvent event) {
-        try {
-            int jumlah = Integer.parseInt(txtJumlah.getText());
-            if(jumlah > 0){
-                if(index >= 0){
-                    keranjang.get(index).setJumlah(jumlah);
-                    keranjang.get(index).setSub(disBarang.getJumlah() * disBarang.getHarga());
-                    Alert a = new Alert(Alert.AlertType.CONFIRMATION, disBarang.getNamaBarang()+
-                            " sebanyak " + disBarang.getJumlah()+
-                            " berhasil diupdate", ButtonType.OK);
-                    a.showAndWait();
-                    batalPilihKlik(event);
-                } else{
-                    if(disBarang != null){
-                    disBarang.setJumlah(jumlah);
-                    disBarang.setSub(disBarang.getJumlah() * disBarang.getHarga());
-                    keranjang.add(disBarang);
-                    Alert a = new Alert(Alert.AlertType.CONFIRMATION, disBarang.getNamaBarang()+
-                            " sebanyak " + disBarang.getJumlah()+
-                            " berhasil ditambahkan ke keranjang", ButtonType.OK);
-                    a.showAndWait();
-                    batalPilihKlik(event);
-                    } else {
-                        Alert a = new Alert(Alert.AlertType.ERROR,"Mohon pilih barang yang ingin anda beli", ButtonType.OK);
+        if(disBarang == null && index < 0){
+                Alert a = new Alert(Alert.AlertType.ERROR,"Mohon pilih barang yang ingin anda beli", ButtonType.OK);
+                a.showAndWait();
+        } else{
+            try {
+                int jumlah = Integer.parseInt(txtJumlah.getText());
+                if(jumlah > 0){
+                    if(index >= 0){
+                        keranjang.get(index).setJumlah(jumlah);
+                        keranjang.get(index).setSub(disBarang.getJumlah() * disBarang.getHarga());
+                        Alert a = new Alert(Alert.AlertType.CONFIRMATION, disBarang.getNamaBarang()+
+                                " sebanyak " + disBarang.getJumlah()+
+                                " berhasil diupdate", ButtonType.OK);
                         a.showAndWait();
+                        batalPilihKlik(event);
+                    } else{
+                        disBarang.setJumlah(jumlah);
+                        disBarang.setSub(disBarang.getJumlah() * disBarang.getHarga());
+                        keranjang.add(disBarang);
+                        Alert a = new Alert(Alert.AlertType.CONFIRMATION, disBarang.getNamaBarang()+
+                                " sebanyak " + disBarang.getJumlah()+
+                                " berhasil ditambahkan ke keranjang", ButtonType.OK);
+                        a.showAndWait();
+                        batalPilihKlik(event);
                     }
+                } else{
+                    Alert a = new Alert(Alert.AlertType.ERROR,"Jumlah pembelian tidak valid!", ButtonType.OK);
+                    a.showAndWait();
                 }
-            } else{
-                Alert a = new Alert(Alert.AlertType.ERROR,"Jumlah pembelian tidak valid!", ButtonType.OK);
-                        a.showAndWait();
+            } catch(NumberFormatException e){
+                Alert a = new Alert(Alert.AlertType.ERROR,"Mohon isikan jumlah pembelian dengan benar", ButtonType.OK);
+                a.showAndWait();
+                txtJumlah.requestFocus();
             }
-        } catch(NumberFormatException e){
-            Alert a = new Alert(Alert.AlertType.ERROR,"Mohon isikan jumlah pembelian dengan benar", ButtonType.OK);
-            a.showAndWait();
-            txtJumlah.requestFocus();
         }
-        
     }
 
     @FXML
@@ -243,26 +242,28 @@ public class FXMLDocumentController implements Initializable {
                 tx.setTitle("Login Admin");
                 tx.setContentText("Password Admin: ");
                 tx.showAndWait();
-                if(tx.getResult().equals("alfa123")){
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_UbahHarga.fxml"));
-                    Parent root = (Parent)loader.load();
-                    FXML_UbahHargaController isidt = (FXML_UbahHargaController)loader.getController();
-                    isidt.ubah(disBarang);
+                if(tx.getResult() != null){
+                    if(tx.getResult().equals("alfa123")){
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_UbahHarga.fxml"));
+                        Parent root = (Parent)loader.load();
+                        FXML_UbahHargaController isidt = (FXML_UbahHargaController)loader.getController();
+                        isidt.ubah(disBarang);
 
-                    Scene scene = new Scene(root);
-                    Stage stg = new Stage();
-                    String css = this.getClass().getResource("Style.css").toExternalForm();
-                    scene.getStylesheets().add(css);
+                        Scene scene = new Scene(root);
+                        Stage stg = new Stage();
+                        String css = this.getClass().getResource("Style.css").toExternalForm();
+                        scene.getStylesheets().add(css);
 
-                    stg.initModality(Modality.APPLICATION_MODAL);
-                    stg.setResizable(false);
-                    stg.setIconified(false);
-                    stg.setScene(scene);
-                    stg.showAndWait();
-                    setTabel(event);
-                } else{
-                    Alert a = new Alert(Alert.AlertType.ERROR,"Password Admin Salah!", ButtonType.OK);
-                    a.showAndWait();
+                        stg.initModality(Modality.APPLICATION_MODAL);
+                        stg.setResizable(false);
+                        stg.setIconified(false);
+                        stg.setScene(scene);
+                        stg.showAndWait();
+                        setTabel(event);
+                    } else{
+                        Alert a = new Alert(Alert.AlertType.ERROR,"Password Admin Salah!", ButtonType.OK);
+                        a.showAndWait();
+                    }
                 }
             }
         } catch (IOException e) {
@@ -285,9 +286,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void hitungSubTotal(ActionEvent event) {
         try {
+            int jumlah = Integer.parseInt(txtJumlah.getText());
+            if(jumlah < 1){
+                Alert a = new Alert(Alert.AlertType.ERROR,"Jumlah pembelian tidak valid!", ButtonType.OK);
+                a.showAndWait();
+            } else {
             txtSubtotal.setText(String.valueOf(disBarang.getHarga() * Integer.parseInt(txtJumlah.getText())));
-        } catch (Exception e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Tolong inputkan angka saja", ButtonType.OK);
+            }
+        } catch (NumberFormatException e) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Mohon isikan jumlah pembelian dengan benar", ButtonType.OK);
             a.showAndWait();
         }
     }
