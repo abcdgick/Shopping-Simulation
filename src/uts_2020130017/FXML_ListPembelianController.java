@@ -25,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import static uts_2020130017.FXMLDocumentController.all;
 import static uts_2020130017.FXMLDocumentController.keranjang;
 
 /**
@@ -82,6 +83,7 @@ public class FXML_ListPembelianController implements Initializable {
         alert.setContentText("Yakin batal beli " + dis.getNamaBarang()+"?");
         
         if(alert.showAndWait().get() == ButtonType.OK){
+            all.get(all.indexOf(dis)).setStok(all.get(all.indexOf(dis)).getStok() + dis.getJumlah());
             keranjang.remove(dis);
             setTabel();
             kembali();

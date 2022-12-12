@@ -127,25 +127,49 @@ public class FXMLDocumentController implements Initializable {
         } else{
             try {
                 int jumlah = Integer.parseInt(txtJumlah.getText());
-                if(jumlah > 0){
+                if(jumlah > 0 && jumlah <= disBarang.getStok()){
                     if(index >= 0){
+                        int selisih = jumlah - keranjang.get(index).getJumlah();
+                        System.out.println("Selisih: "+selisih);
+                        if(selisih != 0){
+                            System.out.println("Stok Awal: "+all.get(all.indexOf(disBarang)).getStok());
+                            all.get(all.indexOf(disBarang)).setStok(all.get(all.indexOf(disBarang)).getStok() - selisih);
+                            System.out.println("Stok Sesudah: "+all.get(all.indexOf(disBarang)).getStok());
+                        } else{
+                            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Data tidak diubah", ButtonType.OK);
+                            a.showAndWait();
+                            batalPilihKlik(event);
+                            return;
+                        }
                         keranjang.get(index).setJumlah(jumlah);
                         keranjang.get(index).setSub(disBarang.getJumlah() * disBarang.getHarga());
                         Alert a = new Alert(Alert.AlertType.CONFIRMATION, disBarang.getNamaBarang()+
-                                " sebanyak " + disBarang.getJumlah()+
+                                " sebanyak " + jumlah+
                                 " berhasil diupdate", ButtonType.OK);
                         a.showAndWait();
+                        setTabel(event);
                         batalPilihKlik(event);
                     } else{
-                        disBarang.setJumlah(jumlah);
-                        disBarang.setSub(disBarang.getJumlah() * disBarang.getHarga());
-                        keranjang.add(disBarang);
+                        int i = keranjang.indexOf(disBarang);
+                        if(i >= 0){
+                            keranjang.get(i).setJumlah(keranjang.get(i).getJumlah() + jumlah);
+                            keranjang.get(i).setSub(disBarang.getJumlah() * disBarang.getHarga());
+                        } else {
+                            disBarang.setJumlah(jumlah);
+                            disBarang.setSub(disBarang.getJumlah() * disBarang.getHarga());
+                            keranjang.add(disBarang);
+                        }
+                        all.get(all.indexOf(disBarang)).setStok(all.get(all.indexOf(disBarang)).getStok() - jumlah);
                         Alert a = new Alert(Alert.AlertType.CONFIRMATION, disBarang.getNamaBarang()+
-                                " sebanyak " + disBarang.getJumlah()+
-                                " berhasil ditambahkan ke keranjang", ButtonType.OK);
+                                    " sebanyak " + jumlah+
+                                    " berhasil ditambahkan ke keranjang", ButtonType.OK);
                         a.showAndWait();
+                        setTabel(event);
                         batalPilihKlik(event);
                     }
+                } else if(jumlah > disBarang.getStok()){
+                    Alert a = new Alert(Alert.AlertType.ERROR,"Jumlah pembelian melebihi stok yang ada!", ButtonType.OK);
+                    a.showAndWait();
                 } else{
                     Alert a = new Alert(Alert.AlertType.ERROR,"Jumlah pembelian tidak valid!", ButtonType.OK);
                     a.showAndWait();
@@ -179,9 +203,10 @@ public class FXMLDocumentController implements Initializable {
             stg.setIconified(false);
             stg.setScene(scene);
             stg.showAndWait();
-            System.out.println(index);
             if(index >= 0){
                 prepareEdit(event);
+            } else{
+                setTabel(event);
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -197,7 +222,11 @@ public class FXMLDocumentController implements Initializable {
         
         if(alert.showAndWait().get() == ButtonType.OK){
             System.out.println("Siap");
+            for(BarangModel barang:keranjang){
+                all.get(all.indexOf(barang)).setStok(all.get(all.indexOf(barang)).getStok() + barang.getJumlah());
+            }
             keranjang.clear();
+            setTabel(event);
         }
         batalPilihKlik(event);
     }

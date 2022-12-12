@@ -52,7 +52,7 @@ public class FXML_UbahHargaController implements Initializable {
         int harga = -1;
         try {
             harga = Integer.parseInt(txtHarga.getText());
-            if(harga < 0){
+            if(harga <= 0){
                 Alert a = new Alert(Alert.AlertType.ERROR, "Harga harus > 0!", ButtonType.OK);
                 a.showAndWait();
             } else{
@@ -63,7 +63,7 @@ public class FXML_UbahHargaController implements Initializable {
 
                 if(alert.showAndWait().get() == ButtonType.OK){
                     all.get(all.indexOf(diss)).setHarga(harga);
-                    if(keranjang.indexOf(diss) > 0) {
+                    if(keranjang.indexOf(diss) >= 0) {
                         keranjang.get(keranjang.indexOf(diss)).setHarga(harga);
                         keranjang.get(keranjang.indexOf(diss)).setSub(harga * diss.getJumlah());
                     }

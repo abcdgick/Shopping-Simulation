@@ -108,10 +108,9 @@ public class FXML_PembayaranController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
         alert.setHeaderText("Kembali ke form utama");
-        alert.setContentText("Kembali ke form utama? Data belanja anda akan dihapus!");
+        alert.setContentText("Kembali ke form utama?");
         
         if(alert.showAndWait().get() == ButtonType.OK){
-            keranjang.clear();
             kembali();
         }
     }
