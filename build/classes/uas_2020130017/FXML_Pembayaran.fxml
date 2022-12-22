@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="FormPane" fx:id="BayarPane" prefHeight="720.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uas_2020130017.FXML_PembayaranController">
+   <children>
+      <ImageView fitHeight="192.0" fitWidth="541.0" layoutX="130.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Assets/Banner.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="166.0" fitWidth="89.0" layoutX="697.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Assets/Albi.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="193.0" fitWidth="260.0" layoutX="272.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Assets/Logo-Alfamart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Assets/Albi%20Flip.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="529.0" layoutY="173.0" text="Total Item">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSubtotal" editable="false" layoutX="647.0" layoutY="173.0" prefHeight="25.0" prefWidth="110.0" />
+      <Button id="btnBayar" fx:id="btnCetak" alignment="CENTER" layoutX="524.0" layoutY="479.0" mnemonicParsing="false" onAction="#cetakKlik" prefHeight="67.0" prefWidth="98.0" text="Cetak Struk" textAlignment="CENTER" wrapText="true" />
+      <Button id="btnKeluar" fx:id="btnBatal" layoutX="653.0" layoutY="495.0" mnemonicParsing="false" onAction="#batalKlik" prefHeight="36.0" prefWidth="89.0" text="Batal" />
+      <TableView fx:id="tbvBayar" layoutX="69.0" layoutY="158.0" prefHeight="390.0" prefWidth="445.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="529.0" layoutY="213.0" text="Total Disc.">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDiskon" editable="false" layoutX="647.0" layoutY="213.0" prefHeight="25.0" prefWidth="110.0" />
+      <Label layoutX="529.0" layoutY="248.0" prefHeight="54.0" prefWidth="70.0" text="Total Belanja" wrapText="true">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTotal" editable="false" layoutX="647.0" layoutY="263.0" prefHeight="25.0" prefWidth="110.0" />
+      <Label layoutX="529.0" layoutY="317.0" text="PPn 11%" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPPN" editable="false" layoutX="647.0" layoutY="317.0" prefHeight="25.0" prefWidth="110.0" />
+      <Label layoutX="529.0" layoutY="359.0" prefHeight="54.0" prefWidth="70.0" text="Total Bayar" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBayar" editable="false" layoutX="647.0" layoutY="374.0" prefHeight="25.0" prefWidth="110.0" />
+      <CheckBox fx:id="cbMember" layoutX="549.0" layoutY="444.0" mnemonicParsing="false" onAction="#addDiskonMember" text="Saya adalah member" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+      </CheckBox>
+   </children>
+</AnchorPane>
